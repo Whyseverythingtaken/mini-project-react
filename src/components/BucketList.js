@@ -25,14 +25,21 @@ function BucketList() {
     });
 
     setBucket(updatedBucket);
-
-    console.log(bucket);
   };
 
   // Function to remove bucket list item and update state
   const removeBucketItem = (id) => {
-    // TODO: Write logic that will return an array of items that don't contain the ID passed to this function
-    // TODO: Update the bucket state variable
+    const filteredBucket = bucket.filter((item) => {
+      if (item.id === id) {
+        return false;
+      }
+
+      return true;
+    });
+
+    setBucket(filteredBucket);
+
+    console.log("bucket item removed", bucket);
   };
 
   // Function to edit the bucket list item
