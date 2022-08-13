@@ -49,6 +49,8 @@ function BucketList() {
       return;
     }
 
+    console.log(itemId, newValue);
+
     // We use the "prev" argument provided with the useState hook to map through our list of items
     // We then check to see if the item ID matches the id of the item that was clicked and if so, we set it to a new value
     setBucket((prev) =>

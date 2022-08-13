@@ -10,9 +10,20 @@ function Bucket(props) {
 
   console.log(props.bucket);
 
-  const submitUpdate = (value) => {
+  const submitUpdate = (item) => {
     // TODO: Write logic to update the `edit` value in state after a user updates an entry in the list
     // TODO: Set the key:value pairs in the `edit` object back to empty strings
+    console.log("Edited value", item);
+    props.editBucketItem(edit.id, item);
+    setEdit({
+      id: null,
+      value: "",
+      eagerness: "",
+    });
+  };
+
+  const onEdit = (value) => {
+    setEdit(value);
   };
 
   // If the user is attempting to edit an item, render the bucket form with the edit variable passed as a prop
@@ -32,7 +43,7 @@ function Bucket(props) {
       <div className="icons">
         {/* // TODO: Add an onClick event update the `edit` object with the `id`,
         `value`, and `eagerness` properties */}
-        <p onClick={() => console.log("test")}> ✏️</p>
+        <p onClick={() => onEdit(item)}> ✏️</p>
         {/* TODO: Add an onClick event that will invoke the removeBucketItem method passing in the `item.id` */}
         <p onClick={() => props.removeBucketItem(item.id)}> 🗑️</p>
       </div>
