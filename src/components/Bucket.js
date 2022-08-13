@@ -31,24 +31,31 @@ function Bucket(props) {
     return <BucketForm edit={edit} onSubmit={submitUpdate} />;
   }
 
-  return props.bucket.map((item, index) => (
-    // TODO: Add a className of `bucket row complete ${item.eagerness}` for completed items, and `bucket-row ${item.eagerness}` for non-completed items
-    // TODO: Add a key attribute set to the value of the index position
-    // Hint: use a ternary operator
-    <div style={{ backgroundColor: "white", margin: 24 }} className="" key="">
-      {item.text}
-      <div key="" onClick={() => props.completeBucketItem(item.id)}>
-        Mark complete
-      </div>
-      <div className="icons">
-        {/* // TODO: Add an onClick event update the `edit` object with the `id`,
+  return props.bucket.map((item, index) => {
+    const completeClass = item.completed ? "complete" : "";
+
+    return (
+      // TODO: Add a className of `bucket row complete ${item.eagerness}` for completed items, and `bucket-row ${item.eagerness}` for non-completed items
+      // TODO: Add a key attribute set to the value of the index position
+      // Hint: use a ternary operator
+      <div
+        className={`bucket row ${completeClass} ${item.eagerness}`}
+        key={item.id}
+      >
+        {item.text}
+        <div onClick={() => props.completeBucketItem(item.id)}>
+          Mark complete
+        </div>
+        <div className="icons">
+          {/* // TODO: Add an onClick event update the `edit` object with the `id`,
         `value`, and `eagerness` properties */}
-        <p onClick={() => onEdit(item)}> ✏️</p>
-        {/* TODO: Add an onClick event that will invoke the removeBucketItem method passing in the `item.id` */}
-        <p onClick={() => props.removeBucketItem(item.id)}> 🗑️</p>
+          <p onClick={() => onEdit(item)}> ✏️</p>
+          {/* TODO: Add an onClick event that will invoke the removeBucketItem method passing in the `item.id` */}
+          <p onClick={() => props.removeBucketItem(item.id)}> 🗑️</p>
+        </div>
       </div>
-    </div>
-  ));
+    );
+  });
 }
 
 export default Bucket;

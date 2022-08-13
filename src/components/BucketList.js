@@ -22,6 +22,8 @@ function BucketList() {
           completed: true,
         };
       }
+
+      return item;
     });
 
     setBucket(updatedBucket);
